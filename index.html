@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedCare System Layout</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- QR Code Script Library Link -->
+    <script src="https://cloudflare.com"></script>
+</head>
+<body>
+    <div class="main-container">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="left-frame">
+            <div class="logo-area">
+                <span class="logo-icon">➕</span>
+                <h2>MedCare</h2>
+            </div>
+            <nav class="sidebar-links">
+                <a href="#" class="nav-item" onclick="showView('home-view')">👤 Profile</a>
+                <a href="#" class="nav-item" onclick="showView('home-view')">🔔 Alerts</a>
+                <a href="#" class="nav-item" onclick="showView('home-view')">🩺 Doctors Info</a>
+                <a href="#" class="nav-item" onclick="showView('home-view')">❓ Help & Support</a>
+                <a href="#" class="nav-item" onclick="showView('dosage-view')">💊 Dosage Track</a>
+                <!-- Updated link to load qr-view -->
+                <a href="#" class="nav-item" onclick="showView('qr-view')">𖣯 Qr generator</a>
+            </nav>
+        </aside>
+
+        <!-- TOP BAR -->
+        <header class="right-top-frame">
+            <div class="header-brand">
+                <h3>MedCare <span class="sub-brand">System</span></h3>
+            </div>
+            <nav class="top-nav-links">
+                <a href="#" class="top-link active" onclick="showView('home-view')">Home</a>
+                <a href="#" class="top-link" onclick="showView('home-view')">Dashboard</a>
+                <a href="#" class="top-link" onclick="showView('home-view')">Schedule Doctor On Call</a>
+            </nav>
+        </header>
+
+        <!-- RIGHT BOTTOM FRAME -->
+        <main class="right-bottom-frame">
+            
+            <!-- VIEW 1: HOME PAGE VIEW -->
+            <div id="home-view" class="view-panel active-view">
+                <div class="dashboard-grid">
+                    <header class="welcome-header">
+                        <h2>Patient Records</h2>
+                        <p>Real-time analytics and tracking for your medical adherence plan.</p>
+                    </header>
+
+                    <div class="dashboard-widgets">
+                        <section class="widget-card">
+                            <h3>Adherence Overview</h3>
+                            <p class="widget-sub">Weekly dose summary breakdown</p>
+                            <div class="chart-container">
+                                <div class="css-pie-chart"></div>
+                                <div class="chart-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-color taken-color"></span>
+                                        <span class="legend-text">Doses Taken (75%)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-color missed-color"></span>
+                                        <span class="legend-text">Doses Missed (25%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="widget-card">
+                            <h3>Hospital Recheckup Status</h3>
+                            <p class="widget-sub">Follow-up appointment logs</p>
+                            <div class="recheckup-container">
+                                <div class="status-banner alert-banner">
+                                    <div class="status-icon">📅</div>
+                                    <div class="status-info">
+                                        <h4>Upcoming Recheckup Required</h4>
+                                        <p>Schedule due within next 48 hours for vitals evaluation.</p>
+                                    </div>
+                                </div>
+                                <div class="visit-history">
+                                    <h4>Recent Visit History</h4>
+                                    <ul class="visit-list">
+                                        <li class="visit-item completed">
+                                            <span class="visit-date">Aug 24, 2026</span>
+                                            <span class="visit-desc">General Cardio Review</span>
+                                            <span class="visit-status badge-success">Completed</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 2: DOSAGE TRACK VIEW -->
+            <div id="dosage-view" class="view-panel">
+                <div class="dashboard-grid">
+                    <header class="welcome-header">
+                        <h2>Dosage Intake Management</h2>
+                        <p>Log daily pill consumption and track pending prescription alarms.</p>
+                    </header>
+
+                    <div class="medication-tracker-box">
+                        <div class="med-card taken">
+                            <div class="med-info">
+                                <h3>Aspirin</h3>
+                                <p>100mg • 8:00 AM</p>
+                            </div>
+                            <span class="badge taken">Taken</span>
+                        </div>
+
+                        <div class="med-card pending">
+                            <div class="med-info">
+                                <h3>Lisinopril</h3>
+                                <p>10mg • 8:00 PM</p>
+                            </div>
+                            <button class="action-btn" onclick="alert('Dose Logged!')">Take Dose</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW 3: QR GENERATOR VIEW -->
+            <div id="qr-view" class="view-panel">
+                <div class="dashboard-grid">
+                    <header class="welcome-header">
+                        <h2>Patient QR Generator</h2>
+                        <p>Compile vital signs and demographics into an instantly scannable card code.</p>
+                    </header>
+
+                    <div class="qr-layout-box">
+                        <!-- Patient Records Preview Card -->
+                        <div class="patient-details-card">
+                            <h3>Patient Profile Summary</h3>
+                            <div class="detail-row"><strong>Name:</strong> <span>John Doe</span></div>
+                            <div class="detail-row"><strong>Age / Sex:</strong> <span>42 / Male</span></div>
+                            <div class="detail-row"><strong>Blood Group:</strong> <span>O Positive</span></div>
+                            <div class="detail-row"><strong>Condition:</strong> <span>Hypertension Management</span></div>
+                            <div class="detail-row"><strong>Primary Doctor:</strong> <span>Dr. Smith (Cardio)</span></div>
+                            
+                            <button class="generate-qr-btn" onclick="generatePatientQR()">Generate Details QR</button>
+                        </div>
+
+                        <!-- Target output block for rendering the QR box -->
+                        <div class="qr-output-card">
+                            <h3>Generated QR Code</h3>
+                            <div id="qrcode-display">
+                                <div class="qr-placeholder-text">Click the button to output active QR graphics code</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- UTILITY CONTROLS SCRIPT -->
+    <!-- UTILITY CONTROLS SCRIPT -->
+    <script>
+        // Tab routing logic
+        function showView(viewId) {
+            document.querySelectorAll('.view-panel').forEach(view => {
+                view.style.display = 'none';
+            });
+            document.getElementById(viewId).style.display = 'block';
+        }
+
+        // Functional QR image generator logic
+        function generatePatientQR() {
+            const qrContainer = document.getElementById("qrcode-display");
+            
+            // Text data to encode
+            const patientData = "Name: John Doe | Age: 42 | Blood: O+ | Condition: Hypertension | Provider: Dr. Smith";
+            const encodedData = encodeURIComponent(patientData);
+
+            // Generate using a reliable public QR image API
+            qrContainer.innerHTML = `<img src="https://qrserver.com{encodedData}" alt="Patient QR Code" style="border-radius: 4px;">`;
+        }
+    </script>
+
+</body>
+</html>

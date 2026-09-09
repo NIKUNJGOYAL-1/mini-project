@@ -1,0 +1,458 @@
+/* ==========================================================================
+   1. CORE RESET & FULL-SCREEN SETUP
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;         /* Strips default browser window margins */
+    padding: 0;        /* Strips default browser window paddings */
+    background-color: #f4f7f6;
+    overflow: hidden;  /* Disables global body scrolling completely */
+}
+
+/* Master Layout Framework using CSS Grid */
+.main-container {
+    display: grid;
+    grid-template-columns: 240px 1fr; /* Left Sidebar fixed | Right Panel fills rest */
+    grid-template-rows: 70px 1fr;     /* Top Header fixed | Bottom Content fills rest */
+    width: 100vw;                      /* Forces exactly full screen width */
+    height: 100vh;                     /* Forces exactly full screen height */
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar content";
+}
+
+/* ==========================================================================
+   2. LEFT FRAME (Sidebar Navigation)
+   ========================================================================== */
+.left-frame {
+    grid-area: sidebar;
+    background-color: #2c3e50;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    border-right: 1px solid #1a252f;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    padding: 0 20px 30px 20px;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 24px;
+}
+
+.logo-area h2 {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* ==========================================================================
+   LINK COLOR RESTORATION FIX
+   ========================================================================== */
+
+/* Fixes the left sidebar link text color */
+.left-frame .nav-item {
+    color: #ecf0f1;
+    text-decoration: none; /* Removes the underline */
+}
+
+.left-frame .nav-item:hover {
+    background-color: #34495e;
+    color: #ffffff;
+}
+
+/* Fixes the top header link text color */
+.right-top-frame .top-link {
+    color: #7f8c8d;
+    text-decoration: none; /* Removes the underline */
+}
+
+.right-top-frame .top-link:hover, 
+.right-top-frame .top-link.active {
+    color: #27ae60;
+    border-bottom-color: #27ae60;
+}
+
+
+.alert-badge {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   3. RIGHT FRAME - TOP (Header Navbar)
+   ========================================================================== */
+.right-top-frame {
+    grid-area: header;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    z-index: 10; /* Keeps the drop-shadow sitting cleanly over content */
+}
+
+.header-brand h3 {
+    color: #2c3e50;
+    font-size: 18px;
+}
+
+.sub-brand {
+    color: #7f8c8d;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.top-nav-links {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+}
+
+.top-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #7f8c8d;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0 5px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.top-link:hover, .top-link.active {
+    color: #27ae60;
+    border-bottom-color: #27ae60;
+}
+
+/* ==========================================================================
+   4. RIGHT FRAME - BOTTOM (Main Content Display)
+   ========================================================================== */
+.right-bottom-frame {
+    grid-area: content;
+    padding: 0;        /* Stripped outer padding so components can reach screen edges */
+    overflow-y: auto;  /* Scrolling only triggers within this quadrant if text overflows */
+    background-color: #f8fafc;
+}
+
+.content-placeholder {
+    background: #ffffff;
+    height: 100%;      /* Stretches the interior layout container to full view height */
+    padding: 40px;
+    box-sizing: border-box;
+    color: #64748b;
+}
+
+.content-placeholder h2 {
+    color: #334155;
+    margin-bottom: 10px;
+}
+
+.content-placeholder p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+/* ==========================================================================
+   5. DASHBOARD SUB-GRID & COMPONENT STYLING
+   ========================================================================== */
+.dashboard-grid {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-sizing: border-box;
+}
+
+.welcome-header h2 {
+    color: #334155;
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.welcome-header p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Side-by-Side Flex Layout for widgets */
+.dashboard-widgets {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap; /* Allows stacking neatly on smaller laptop configurations */
+}
+
+/* Reusable Dashboard Card Wrapper */
+.widget-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    flex: 1;
+    min-width: 320px; /* Prevents squishing */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.widget-card h3 {
+    color: #1e293b;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.widget-sub {
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   6. PURE CSS PIE CHART COMPONENT
+   ========================================================================== */
+.chart-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Conic gradient maps 0% to 75% as green, and 75% to 100% as red */
+.css-pie-chart {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #27ae60 0% 75%,
+        #e74c3c 75% 100%
+    );
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+}
+
+.taken-color { background-color: #27ae60; }
+.missed-color { background-color: #e74c3c; }
+
+.legend-text {
+    font-size: 14px;
+    color: #475569;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   7. RECHECKUP STATUS & TIMELINE COMPONENT
+   ========================================================================== */
+.recheckup-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Alert Banner styling */
+.status-banner {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 8px;
+    align-items: flex-start;
+}
+
+.alert-banner {
+    background-color: #fffbeb;
+    border: 1px solid #fde68a;
+}
+
+.status-icon {
+    font-size: 20px;
+}
+
+.status-info h4 {
+    color: #b45309;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.status-info p {
+    color: #d97706;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Visit History list styling */
+.visit-history h4 {
+    color: #475569;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.visit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.visit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-left: 3px solid #cbd5e1;
+}
+
+.visit-item.completed {
+    border-left-color: #27ae60;
+}
+
+.visit-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    min-width: 85px;
+}
+
+.visit-desc {
+    font-size: 13px;
+    color: #334155;
+    flex: 1;
+    padding-left: 10px;
+}
+
+.badge-success {
+    font-size: 11px;
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+/* Keeps sections invisible by default until targeted by JavaScript */
+.view-panel {
+    display: none; 
+    width: 100%;
+    height: 100%;
+}
+
+/* Forces the Home panel to display right away when the app is first opened */
+.view-panel.active-view {
+    display: block; 
+}
+/* ==========================================================================
+   9. QR GENERATOR SCREEN PANEL STYLING
+   ========================================================================== */
+.qr-layout-box {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    max-width: 800px;
+}
+
+.patient-details-card, .qr-output-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    flex: 1;
+    min-width: 300px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.patient-details-card h3, .qr-output-card h3 {
+    color: #2c3e50;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 8px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #475569;
+}
+
+.detail-row strong {
+    color: #1e293b;
+}
+
+.generate-qr-btn {
+    width: 100%;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.generate-qr-btn:hover {
+    background-color: #219653;
+}
+
+#qrcode-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+    background: #f8fafc;
+    border: 2px dashed #e2e8f0;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.qr-placeholder-text {
+    font-size: 12px;
+    color: #94a3b8;
+    text-align: center;
+    max-width: 200px;
+}
+
+
