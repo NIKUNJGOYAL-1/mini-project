@@ -6,13 +6,12 @@
     <title>MedCare System Layout</title>
     <link rel="stylesheet" href="style.css">
     
-    <!-- FIX: Loaded the authentic, live QR code generator script engine -->
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
     <div class="main-container">
 
-        <!-- LEFT SIDEBAR -->
+
         <aside class="left-frame">
             <div class="logo-area">
                 <span class="logo-icon">➕</span>
@@ -28,7 +27,6 @@
             </nav>
         </aside>
 
-        <!-- TOP BAR -->
         <header class="right-top-frame">
             <div class="header-brand">
                 <h3>MedCare <span class="sub-brand">System</span></h3>
@@ -40,10 +38,9 @@
             </nav>
         </header>
 
-        <!-- RIGHT BOTTOM FRAME -->
         <main class="right-bottom-frame">
             
-            <!-- VIEW 1: HOME PAGE VIEW -->
+
             <div id="home-view" class="view-panel active-view">
                 <div class="dashboard-grid">
                     <header class="welcome-header">
@@ -97,7 +94,6 @@
                 </div>
             </div>
 
-            <!-- VIEW 2: DOSAGE TRACK VIEW -->
             <div id="dosage-view" class="view-panel">
                 <div class="dashboard-grid">
                     <header class="welcome-header">
@@ -125,7 +121,6 @@
                 </div>
             </div>
 
-            <!-- VIEW 3: QR GENERATOR VIEW -->
             <div id="qr-view" class="view-panel">
                 <div class="dashboard-grid">
                     <header class="welcome-header">
@@ -147,7 +142,7 @@
 
                         <div class="qr-output-card">
                             <h3>Generated QR Code</h3>
-                            <!-- Target output container block -->
+
                             <div id="qrcode-display">
                                 <div class="qr-placeholder-text">Click the button to output active QR graphics code</div>
                             </div>
@@ -159,9 +154,9 @@
         </main>
     </div>
 
-    <!-- RECONFIGURED JAVASCRIPT LOGIC ENGINE -->
+
     <script>
-        // Structural view switcher router
+
         function showView(viewId) {
             document.querySelectorAll('.view-panel').forEach(view => {
                 view.style.display = 'none';
@@ -169,17 +164,17 @@
             document.getElementById(viewId).style.display = 'block';
         }
 
-        // Live scannable QR rendering algorithm
+
         function generatePatientQR() {
             const qrContainer = document.getElementById("qrcode-display");
             
-            // Step 1: Wipe the container text clean to make room for drawing elements
+
             qrContainer.innerHTML = "";
 
-            // Step 2: Formulate data structure string string value details
+
             const patientData = "PATIENT FILE\nName: John Doe\nAge: 42\nBlood Group: O+\nCondition: Hypertension";
 
-            // Step 3: Call the script library constructor safely directly in DOM workspace
+
             new QRCode(qrContainer, {
                 text: patientData,
                 width: 150,
