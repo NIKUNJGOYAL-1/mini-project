@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. CORE RESET & FULL-SCREEN SETUP
-   ========================================================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,27 +9,25 @@
 html, body {
     width: 100vw;
     height: 100vh;
-    margin: 0;         /* Strips default browser window margins */
-    padding: 0;        /* Strips default browser window paddings */
+    margin: 0;       
+    padding: 0;       
     background-color: #f4f7f6;
-    overflow: hidden;  /* Disables global body scrolling completely */
+    overflow: hidden; 
 }
 
 /* Master Layout Framework using CSS Grid */
 .main-container {
     display: grid;
-    grid-template-columns: 240px 1fr; /* Left Sidebar fixed | Right Panel fills rest */
-    grid-template-rows: 70px 1fr;     /* Top Header fixed | Bottom Content fills rest */
-    width: 100vw;                      /* Forces exactly full screen width */
-    height: 100vh;                     /* Forces exactly full screen height */
+    grid-template-columns: 240px 1fr; 
+    grid-template-rows: 70px 1fr;    
+    width: 100vw;                    
+    height: 100vh;                  
     grid-template-areas: 
         "sidebar header"
         "sidebar content";
 }
 
-/* ==========================================================================
-   2. LEFT FRAME (Sidebar Navigation)
-   ========================================================================== */
+
 .left-frame {
     grid-area: sidebar;
     background-color: #2c3e50;
@@ -65,14 +61,11 @@ html, body {
     gap: 5px;
 }
 
-/* ==========================================================================
-   LINK COLOR RESTORATION FIX
-   ========================================================================== */
 
-/* Fixes the left sidebar link text color */
+
 .left-frame .nav-item {
     color: #ecf0f1;
-    text-decoration: none; /* Removes the underline */
+    text-decoration: none; 
 }
 
 .left-frame .nav-item:hover {
@@ -80,10 +73,10 @@ html, body {
     color: #ffffff;
 }
 
-/* Fixes the top header link text color */
+
 .right-top-frame .top-link {
     color: #7f8c8d;
-    text-decoration: none; /* Removes the underline */
+    text-decoration: none; 
 }
 
 .right-top-frame .top-link:hover, 
@@ -102,9 +95,7 @@ html, body {
     font-weight: bold;
 }
 
-/* ==========================================================================
-   3. RIGHT FRAME - TOP (Header Navbar)
-   ========================================================================== */
+
 .right-top-frame {
     grid-area: header;
     background-color: #ffffff;
@@ -113,7 +104,7 @@ html, body {
     justify-content: space-between;
     padding: 0 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    z-index: 10; /* Keeps the drop-shadow sitting cleanly over content */
+    z-index: 10; 
 }
 
 .header-brand h3 {
@@ -150,19 +141,17 @@ html, body {
     border-bottom-color: #27ae60;
 }
 
-/* ==========================================================================
-   4. RIGHT FRAME - BOTTOM (Main Content Display)
-   ========================================================================== */
+
 .right-bottom-frame {
     grid-area: content;
-    padding: 0;        /* Stripped outer padding so components can reach screen edges */
-    overflow-y: auto;  /* Scrolling only triggers within this quadrant if text overflows */
+    padding: 0;       
+    overflow-y: auto;  
     background-color: #f8fafc;
 }
 
 .content-placeholder {
     background: #ffffff;
-    height: 100%;      /* Stretches the interior layout container to full view height */
+    height: 100%;   
     padding: 40px;
     box-sizing: border-box;
     color: #64748b;
@@ -177,9 +166,7 @@ html, body {
     font-size: 15px;
     line-height: 1.5;
 }
-/* ==========================================================================
-   5. DASHBOARD SUB-GRID & COMPONENT STYLING
-   ========================================================================== */
+
 .dashboard-grid {
     padding: 30px;
     display: flex;
@@ -199,14 +186,14 @@ html, body {
     font-size: 14px;
 }
 
-/* Side-by-Side Flex Layout for widgets */
+
 .dashboard-widgets {
     display: flex;
     gap: 25px;
-    flex-wrap: wrap; /* Allows stacking neatly on smaller laptop configurations */
+    flex-wrap: wrap;
 }
 
-/* Reusable Dashboard Card Wrapper */
+
 .widget-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -229,16 +216,14 @@ html, body {
     margin-bottom: 24px;
 }
 
-/* ==========================================================================
-   6. PURE CSS PIE CHART COMPONENT
-   ========================================================================== */
+
 .chart-container {
     display: flex;
     align-items: center;
     gap: 30px;
 }
 
-/* Conic gradient maps 0% to 75% as green, and 75% to 100% as red */
+
 .css-pie-chart {
     width: 130px;
     height: 130px;
@@ -277,16 +262,14 @@ html, body {
     font-weight: 500;
 }
 
-/* ==========================================================================
-   7. RECHECKUP STATUS & TIMELINE COMPONENT
-   ========================================================================== */
+
 .recheckup-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-/* Alert Banner styling */
+
 .status-banner {
     display: flex;
     gap: 12px;
@@ -316,7 +299,7 @@ html, body {
     line-height: 1.4;
 }
 
-/* Visit History list styling */
+
 .visit-history h4 {
     color: #475569;
     font-size: 13px;
@@ -368,20 +351,18 @@ html, body {
     border-radius: 4px;
     font-weight: 600;
 }
-/* Keeps sections invisible by default until targeted by JavaScript */
+
 .view-panel {
     display: none; 
     width: 100%;
     height: 100%;
 }
 
-/* Forces the Home panel to display right away when the app is first opened */
+
 .view-panel.active-view {
     display: block; 
 }
-/* ==========================================================================
-   9. QR GENERATOR SCREEN PANEL STYLING
-   ========================================================================== */
+
 .qr-layout-box {
     display: flex;
     gap: 25px;
