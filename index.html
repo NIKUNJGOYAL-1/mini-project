@@ -18,27 +18,115 @@
                 <h2>MedCare</h2>
             </div>
             <nav class="sidebar-links">
-                <a href="#" class="nav-item" onclick="showView('home-view')">👤 Profile</a>
-                <a href="#" class="nav-item" onclick="showView('home-view')">🔔 Alerts</a>
-                <a href="#" class="nav-item" onclick="showView('home-view')">🩺 Doctors Info</a>
-                <a href="#" class="nav-item" onclick="showView('home-view')">❓ Help & Support</a>
+                <a href="#" class="nav-item" onclick="showView('profile-view')">👤 Profile</a>
+                <a href="#" class="nav-item" onclick="showView('alert-view')">🔔 Alerts</a>
+                <a href="#" class="nav-item" onclick="showView('doctor-view')">🩺 Doctors Info</a>
+                <a href="#" class="nav-item" onclick="showView('help-view')">❓ Help & Support</a>
                 <a href="#" class="nav-item" onclick="showView('dosage-view')">💊 Dosage Track</a>
                 <a href="#" class="nav-item" onclick="showView('qr-view')">𖣯 Qr generator</a>
             </nav>
         </aside>
 
         <header class="right-top-frame">
+            <div id="profile-view" class="view-panel">
+        <div class="dashboard-grid">
+            <header class="welcome-header">
+                <h2>Patient Profile</h2>
+                <p>Manage your personal identification records, insurance metrics, and emergency contacts.</p>
+            </header>
+
+            <div class="profile-layout-container">
+                
+                <section class="profile-card primary-info-card">
+                    <div class="avatar-strip">
+                        <div class="profile-avatar">JD</div>
+                        <div class="profile-title-block">
+                            <h3>John Doe</h3>
+                            <p class="patient-id">ID: #MC-2026-8941</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-details-grid">
+                        <div class="info-field">
+                            <label>Date of Birth</label>
+                            <span class="info-value">November 14, 1983</span>
+                        </div>
+                        <div class="info-field">
+                            <label>Age / Sex</label>
+                            <span class="info-value">42 / Male</span>
+                        </div>
+                        <div class="info-field">
+                            <label>Blood Group</label>
+                            <span class="info-value-highlight">O Positive (O+)</span>
+                        </div>
+                        <div class="info-field">
+                            <label>Primary Language</label>
+                            <span class="info-value">English</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Medical & Insurance Details Card -->
+                <section class="profile-card data-info-card">
+                    <h3>Medical & Coverage Metrics</h3>
+                    <div class="profile-details-grid">
+                        <div class="info-field">
+                            <label>Primary Condition</label>
+                            <span class="info-value">Hypertension Management</span>
+                        </div>
+                        <div class="info-field">
+                            <label>Allergies</label>
+                            <span class="info-value allergy-text">Penicillin, Peanuts</span>
+                        </div>
+                        <div class="info-field">
+                            <label>Insurance Provider</label>
+                            <span class="info-value">CrossBlue Health Corp</span>
+                        </div>
+                        <div class="info-field">
+                            <label>Policy Number</label>
+                            <span class="info-value">POL-99201-XB</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Emergency Contact Card -->
+                <section class="profile-card contact-info-card">
+                    <h3>Emergency Contact</h3>
+                    <div class="profile-details-grid">
+                        <div class="info-field">
+                            <label>Contact Person</label>
+                            <span class="info-value">Jane Doe (Spouse)</span>
+                        </div>
+                        <div class="info-field">
+                            <label>Mobile Number</label>
+                            <span class="info-value">+1 (555) 019-2834</span>
+                        </div>
+                        <div class="info-field">
+                            <label>Alternative Contact</label>
+                            <span class="info-value">+1 (555) 019-5566</span>
+                        </div>
+                        <div class="info-field-action">
+                            <button class="profile-edit-btn" onclick="alert('Opening profile editor modal...')">Update Information</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
             <div class="header-brand">
                 <h3>MedCare <span class="sub-brand">System</span></h3>
             </div>
             <nav class="top-nav-links">
                 <a href="#" class="top-link active" onclick="showView('home-view')">Home</a>
-                <a href="#" class="top-link" onclick="showView('home-view')">Dashboard</a>
-                <a href="#" class="top-link" onclick="showView('home-view')">Schedule Doctor On Call</a>
+                <a href="#" class="top-link" onclick="showView('dashboard-view')">Dashboard</a>
+                <a href="#" class="top-link" onclick="showView('call-view')">Schedule Doctor On Call</a>
             </nav>
         </header>
 
         <main class="right-bottom-frame">
+            <div id="profile-view">
+            </div>
             
 
             <div id="home-view" class="view-panel active-view">
@@ -94,6 +182,8 @@
                 </div>
             </div>
 
+            
+
             <div id="dosage-view" class="view-panel">
                 <div class="dashboard-grid">
                     <header class="welcome-header">
@@ -120,6 +210,67 @@
                     </div>
                 </div>
             </div>
+            <!-- Alert View Panel -->
+<div id="alert-view" class="view-panel">
+    <div class="dashboard-grid">
+        <header class="welcome-header">
+            <h2>System Alerts & Notifications</h2>
+            <p>Critical medical updates, scheduled prescription tasks, and system activity logs.</p>
+        </header>
+
+        <div class="alerts-container">
+            <!-- Critical Priority Alert -->
+            <div class="alert-item priority-critical">
+                <div class="alert-status-icon">🚨</div>
+                <div class="alert-details">
+                    <div class="alert-meta">
+                        <span class="alert-badge badge-critical">Critical</span>
+                        <span class="alert-time">Just Now</span>
+                    </div>
+                    <h3>Missed Evening Vitals Check</h3>
+                    <p>Your blood pressure telemetry log has been missing for over 12 hours. Please complete a manual reading on your device immediately to sync records with Dr. Smith.</p>
+                    <div class="alert-actions">
+                        <button class="alert-btn action-primary" onclick="showView('qr-view')">Sync Vitals Now</button>
+                        <button class="alert-btn action-secondary" onclick="this.parentElement.parentElement.parentElement.style.display='none'">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warning Priority Alert -->
+            <div class="alert-item priority-warning">
+                <div class="alert-status-icon">⚠️</div>
+                <div class="alert-details">
+                    <div class="alert-meta">
+                        <span class="alert-badge badge-warning">Warning</span>
+                        <span class="alert-time">2 hours ago</span>
+                    </div>
+                    <h3>Upcoming Prescription Renewal</h3>
+                    <p>Your prescription for <strong>Lisinopril 10mg</strong> expires in 5 days. Ensure your appointment schedule is finalized to avoid treatment lapses.</p>
+                    <div class="alert-actions">
+                        <button class="alert-btn action-primary" onclick="alert('Redirecting to renewal portal...')">Request Refill</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Priority Alert -->
+            <div class="alert-item priority-info">
+                <div class="alert-status-icon">ℹ️</div>
+                <div class="alert-details">
+                    <div class="alert-meta">
+                        <span class="alert-badge badge-info">System Info</span>
+                        <span class="alert-time">Yesterday</span>
+                    </div>
+                    <h3>Lab Results Uploaded</h3>
+                    <p>Your blood panel diagnostics from the August 24 General Cardio Review have been successfully transmitted by the laboratory and verified by our system backend.</p>
+                    <div class="alert-actions">
+                        <button class="alert-btn action-secondary" onclick="alert('Opening report PDF...')">View Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
             <div id="qr-view" class="view-panel">
                 <div class="dashboard-grid">
