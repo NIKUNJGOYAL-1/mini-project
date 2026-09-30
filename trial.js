@@ -1,4 +1,4 @@
-// Initial State Data Mock setup
+
 let appUser = null;
 let healthScoreChart = null;
 
