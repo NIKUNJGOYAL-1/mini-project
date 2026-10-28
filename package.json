@@ -1,0 +1,7 @@
+{
+  "name": "mediscore",
+  "version": "1.0.0",
+  "description": "MediScore - Medical Adherence Platform",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" }
+}
